@@ -1,0 +1,9 @@
+C:\Users\Hutdris\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\bin\Debug\SVM_homework.exe.config
+C:\Users\hutdr\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\bin\Debug\SVM_homework.exe.config
+C:\Users\Hutdris\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\obj\Debug\SVM_homework.exe
+C:\Users\Hutdris\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\obj\Debug\SVM_homework.pdb
+C:\Users\Hutdris\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\bin\Debug\SVM_homework.exe
+C:\Users\Hutdris\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\bin\Debug\SVM_homework.pdb
+C:\Users\Hutdris\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\obj\Debug\SVM_homework.csprojResolveAssemblyReference.cache
+C:\Users\hutdr\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\obj\Debug\SVM_homework.exe
+C:\Users\hutdr\Google 雲端硬碟\Code\IISR\暑期課程\SVM\SVM_homework\SVM_homework\obj\Debug\SVM_homework.pdb

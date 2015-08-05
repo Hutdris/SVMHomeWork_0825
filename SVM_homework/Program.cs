@@ -26,21 +26,30 @@ namespace SVM_homework
                 string bookInnerText = node.InnerText;
                 char[] spliter={' ',',','.','!','\r','\n','(',')','"','/'};
                 string[]  bookWords=bookInnerText.Split(spliter);
-                List<int> WordsIndex=new List<int>();
-                //建立字典，並將字詞依字典編號存入wordsIndex
                 for (int i = 0; i < bookWords.Length; i++)
                 {
-                    if (bookWords[i].Length > 0 && !char.IsDigit(bookWords[i][0])) 
+                    bookWords[i] = Stemmer.Stem(bookWords[i]);
+                }
+                List<int> WordsIndex=new List<int>();
+                //建立字典，並將字詞依字典編號存入wordsIndex
+                //List<int> counter = new List<int>();
+                for (int i = 0; i < bookWords.Length; i++)
+                {
+                    //if (bookWords[i].Length > 2 && bookWords[i].Length<10 && !char.IsDigit(bookWords[i][0])) 
+                    if(true)
                     {
-                        if (collectOfWords.ContainsKey(bookWords[i].ToLower()) == false)
+                        if (collectOfWords.ContainsKey(bookWords[i]) == false)
                         {
-                            collectOfWords.Add( bookWords[i].ToLower(),keyPointer);
+                            collectOfWords.Add( bookWords[i],keyPointer);
                             WordsIndex.Add(keyPointer);
+                            //counter.Add(1);
                             keyPointer++;
                         }
                         else{
-                            WordsIndex.Add(collectOfWords[bookWords[i].ToLower()]);
+                            WordsIndex.Add(collectOfWords[bookWords[i]]);
+                            //counter[collectOfWords[bookWords[i]]-1]++;
                         }
+
                     }
                 }
                 bookList.Add(WordsIndex);
@@ -54,10 +63,55 @@ namespace SVM_homework
             創新bool list m*n m為樣本總數 n為dic中words的總數
             //
              * ***************************************/
-            bool[,] theRightOne=new bool[5000,collectOfWords.Count];
-            for (int i = 0; i < 5000; i++)
+            StreamWriter test = new StreamWriter("./testS.t");
+            StreamWriter train = new StreamWriter("./trainS.txt");
+            for (int m = 0; m < 5000; m++)
             {
-                for (int k = 0; k < collectOfWords.Count; k++)
+                //n從1開始，和字典統一
+                //輸出至test
+                System.Console.WriteLine(Convert.ToString(m) + "th data is writed");
+                if (m % 1000 < 200)
+                {
+                    test.Write("+" + m / 1000);
+
+                    
+
+                    for (int n = 1; n < collectOfWords.Count + 1; n++)
+                    {
+                        if (bookList[m].Contains(n))
+                        {
+                            test.Write(" " + Convert.ToString(n) + ":1");
+                        }
+                        else
+                        {
+                            //test.Write(" " + Convert.ToString(n) + ":0");
+                        }
+                    }
+                    test.WriteLine();
+                }
+                //輸出至train
+                else
+                {
+                    train.Write("+" + m / 1000);
+
+                    for (int n = 1; n < collectOfWords.Count + 1; n++)
+                    {
+                        if (bookList[m].Contains(n))
+                        {
+                            train.Write(" " + Convert.ToString(n) + ":1");
+                        }
+                        else
+                        {
+                            //train.Write(" " + Convert.ToString(n) + ":0");
+                        }
+                    }
+                    train.WriteLine();
+                }
+            }
+            test.Close();
+            train.Close();
+                /******************
+                for (int n = 0; n < collectOfWords.Count; n++)
                 {
                     if (bookList[i].Contains(k + 1))
                         theRightOne[i, k] = true;
@@ -66,8 +120,7 @@ namespace SVM_homework
                 
             }
 
-            StreamWriter test = new StreamWriter("./testR.t");
-            StreamWriter train = new StreamWriter("./trainR.txt");
+
 
             for (int m = 0; m < 5000; m++)
             {
